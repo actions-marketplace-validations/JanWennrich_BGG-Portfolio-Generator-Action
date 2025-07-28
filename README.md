@@ -2,7 +2,7 @@
 
 **GitHub Action to generate a static portfolio website from a [BoardGameGeek](https://boardgamegeek.com) account.**
 
-This action installs and runs [`jan-wennrich/bgg-portfolio-generator`](https://github.com/jan-wennrich/bgg-portfolio-generator) to build a personal board game portfolio site directly from your BGG collection.
+This action installs and runs [`jan-wennrich/bgg-portfolio-generator`](https://github.com/JanWennrich/BGG-Portfolio-Generator) to build a personal board game portfolio site directly from your BGG collection.
 
 ## 📦 Inputs
 
@@ -57,7 +57,7 @@ jobs:
 Under the hood, this action:
 
 1. Sets up PHP 8.3.
-2. Installs `jan-wennrich/bgg-portfolio-generator` via Composer.
+2. Installs [`jan-wennrich/bgg-portfolio-generator`](https://packagist.org/packages/jan-wennrich/bgg-portfolio-generator) via Composer.
 3. Runs the `composer generate` command for the given BGG username every night at 04:00 or when triggered manually.
 4. Publishes the generated portfolio to GitHub pages
 
