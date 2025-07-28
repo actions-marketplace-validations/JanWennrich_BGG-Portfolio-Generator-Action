@@ -13,7 +13,7 @@ runs:
         php-version: '8.3'
 
     - name: Install jan-wennrich/bgg-portfolio-generator
-      run: composer create-project jan-wennrich/bgg-portfolio-generator --no-dev --no-progress --stability dev
+      run: composer create-project jan-wennrich/bgg-portfolio-generator . --no-dev --no-progress --stability dev
       shell: bash
 
     - name: Run generator
