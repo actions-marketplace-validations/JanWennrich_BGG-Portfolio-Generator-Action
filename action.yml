@@ -1,0 +1,23 @@
+name: "BGG Portfolio Generator"
+description: "GitHub Action to generate a static portfolio website from a BoardGameGeek account"
+inputs:
+  bgg_username:
+    description: "The BoardGameGeek account to generate the portfolio for"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+
+    - name: Install jan-wennrich/bgg-portfolio-generator
+      run: composer create-project jan-wennrich/bgg-portfolio-generator --no-dev --no-progress --stability dev
+      shell: bash
+
+    - name: Run generator
+      run: |
+        cd bgg-portfolio-generator
+        composer generate "${{ inputs.bgg_username }}"
+      shell: bash
