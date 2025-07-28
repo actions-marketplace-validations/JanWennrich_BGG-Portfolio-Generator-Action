@@ -17,7 +17,5 @@ runs:
       shell: bash
 
     - name: Run generator
-      run: |
-        cd bgg-portfolio-generator
-        composer generate "${{ inputs.bgg_username }}"
+      run: composer generate "${{ inputs.bgg_username }}"
       shell: bash
