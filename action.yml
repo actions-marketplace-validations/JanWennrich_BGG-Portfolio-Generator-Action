@@ -1,5 +1,8 @@
 name: "BGG Portfolio Generator"
 description: "GitHub Action to generate a static portfolio website from a BoardGameGeek account"
+branding:
+  icon: image
+  color: orange
 inputs:
   bgg_username:
     description: "The BoardGameGeek account to generate the portfolio for"
