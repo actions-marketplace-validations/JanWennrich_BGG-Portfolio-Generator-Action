@@ -11,12 +11,13 @@ This action installs and runs [`jan-wennrich/bgg-portfolio-generator`](https://g
 | `bgg_username` | The BoardGameGeek username to generate the portfolio for. | ✅ Yes    |
 
 
-## 🚀 Usage
+## 🚀 Usage Example
 
-Here's how to use this action in your workflow:
+Here's an example on how to use this action to periodically generate a BoardGameGeek portoflio and publish it to GitHub pages.  
+_(Before you copy this example, make sure your repository has [GitHub Pages enabled](https://docs.github.com/en/pages/quickstart))_
 
 ```yaml
-name: Generate BGG Portfolio
+name: Generate & Publish BGG Portfolio
 
 on:
   # Run on push to "main"
@@ -29,12 +30,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  # Generate HTML
   build:
     runs-on: ubuntu-latest
     steps:
+      # Generate HTML
       - uses: JanWennrich/BGG-Portfolio-Generator-Action@main
         with:
           bgg_username: Klabauterjan
+      # Store HTML as a pages artifact
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -58,8 +62,7 @@ Under the hood, this action:
 
 1. Sets up PHP 8.3.
 2. Installs [`jan-wennrich/bgg-portfolio-generator`](https://packagist.org/packages/jan-wennrich/bgg-portfolio-generator) via Composer.
-3. Runs the `composer generate` command for the given BGG username every night at 04:00 or when triggered manually.
-4. Publishes the generated portfolio to GitHub pages
+3. Runs the `composer generate` command for the given BGG username to generate a static portfolio website in `public/`
 
 
 ## 📝 Example Output
@@ -68,12 +71,6 @@ The output is a static HTML site listing your BGG games with cover images, ratin
 
 See a live example at:
 📍 [https://janwennrich.github.io/boardgames/](https://janwennrich.github.io/boardgames/)
-
-
-## 🛠️ Requirements
-
-* Your repository must have GitHub Pages enabled: https://docs.github.com/en/pages/quickstart
-* Your workflow must grant `pages: write` and `id-token: write` permissions to deploy.
 
 
 ## 📄 License
